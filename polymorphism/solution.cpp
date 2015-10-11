@@ -1,3 +1,5 @@
+/* Question: what is the output? */
+
 #include <iostream>
 
 class A {
