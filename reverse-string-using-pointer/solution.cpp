@@ -1,10 +1,15 @@
-#include <string>
 #include <iostream>
 
 using namespace std;
 
-string reverseWord(string word) {
-    char *p0=&word[0], *p1=&word[word.size()-1];
+char* reverseWord(char* word) {
+    char *p0=word;
+    char *p1=word;
+    //
+    while(*p1!='\0')
+        ++p1;
+    --p1;
+    //
     while( p0!=p1 ) {
         char tmp = *p0;
         *p0 = *p1;
@@ -14,13 +19,13 @@ string reverseWord(string word) {
             break;
         --p1;
     }
-    return move(word);
+    return word;
 }
 
 int main() {
-    string word;
+    char word[4096];
     while(cin>>word) {
         cout<<word<<" --> ";
-        cout<<reverseWord(move(word))<<endl;
+        cout<<reverseWord(word)<<endl;
     }
 }
