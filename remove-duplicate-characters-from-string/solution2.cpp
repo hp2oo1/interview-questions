@@ -1,5 +1,10 @@
-// This is the text editor interface. 
-// Anything you type or change here will be seen by the other person in real time.
+/*
+write a function to compare 2 strings of the same length
+find the number of different chars.
+e.g.
+myCompare('bond','debt') = 2
+myCompare('xxxx','yyyy') = 1
+*/
 
 #include <string>
 #include <set>
