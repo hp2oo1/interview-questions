@@ -3,17 +3,19 @@
 using namespace std;
 
 class Node {
-public:
     int data;
     Node* next;
+public:
     Node(int d) : data(d), next(nullptr) {}
-    Node* Append(int data) {
+    Node* push(int data) {
         Node* new_node = new Node(data);
         next = new_node;
         return new_node;
     }
 //
 friend void print( const Node* p );
+friend const Node* hasLoop( const Node* head );
+friend int main();
 };
 
 void print( const Node* p ) {
@@ -67,20 +69,18 @@ const Node* hasLoop( const Node* head ) {
 int main() {
     
     Node head(0);
-    (&head)->Append(1)->Append(2)->Append(3);
+    (&head)->push(1)->push(2)->push(3);
     // make a loop
-    (&head)->next = (&head);
-    //(&head)->next->next->next->next = (&head)->next->next;
+    (&head)->next->next->next->next = (&head)->next->next;
     // check
     print( &head );
     
     // hasLoop?
     const Node* p = hasLoop( &head );
-    if( p==nullptr ) {
+    if( p==nullptr )
         cout<<"no loop\n";
-    }
-    else {
+    else
         cout<<"has loop starting at "<< p->data << endl;
-    }
-    
+
+    return 0;    
 }
