@@ -37,13 +37,13 @@ const Node* hasLoop( const Node* head ) {
         p1 = p1->next;
         p2 = p2->next;
         if( p2==nullptr )
-            break;
+            return nullptr;
         p2 = p2->next;
         if( p1==p2 )
             break;
     }
     if( p2==nullptr )
-        return p2; // no loop
+        return nullptr;
     // find first node starting the loop
     // find pL = head + loop
     const Node* pL(head);
@@ -66,15 +66,16 @@ const Node* hasLoop( const Node* head ) {
 
 int main() {
     
-    Node *pHead = new Node(0);
-    pHead->Append(1)->Append(2)->Append(3);
+    Node head(0);
+    (&head)->Append(1)->Append(2)->Append(3);
     // make a loop
-    pHead->next->next->next->next = pHead->next->next;
+    (&head)->next = (&head);
+    //(&head)->next->next->next->next = (&head)->next->next;
     // check
-    print( pHead );
+    print( &head );
     
     // hasLoop?
-    const Node* p = hasLoop( pHead );
+    const Node* p = hasLoop( &head );
     if( p==nullptr ) {
         cout<<"no loop\n";
     }
